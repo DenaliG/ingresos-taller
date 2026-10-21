@@ -27,6 +27,7 @@ export async function PUT(req) {
       met: x.met === 'Transferencia' ? 'Transferencia' : 'Efectivo',
       monto: +x.monto,
       fact: !!x.fact,
+      desc: String(x.desc ?? '').slice(0, 200),
     }));
   try {
     await put(RUTA, JSON.stringify(d), { access: 'private', addRandomSuffix: false, allowOverwrite: true, contentType: 'application/json' });
